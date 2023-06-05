@@ -25,7 +25,7 @@ const ItemDetails = () => {
 
   const getItem = async () => {
     const item = await fetch(
-      `http://localhost:1337/api/items/${itemId}?populate=image`,
+      `https://jazz-apparels.onrender.com/api/items/${itemId}?populate=image`,
       { method: "GET" }
     );
     const itemJson = await item.json();
@@ -34,7 +34,7 @@ const ItemDetails = () => {
 
   const getItems = async () => {
     const items = await fetch(
-      "http://localhost:1337/api/items?populate=image",
+      "https://jazz-apparels.onrender.com/api/items?populate=image",
       { method: "GET" }
     );
     const itemJson = await items.json();
@@ -52,7 +52,7 @@ const ItemDetails = () => {
         {/* IMAGE */}
         <Box flex="1 1 40%" mb="40px">
           <img
-            src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+            src={`https://jazz-apparels.onrender.com${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
             alt={item?.name}
             width="100%"
             height="100%"
