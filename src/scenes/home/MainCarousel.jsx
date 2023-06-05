@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography, IconButton, useMediaQuery } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -22,12 +22,24 @@ const importAll = async (context) => {
 
 const assetContext = import.meta.glob('../../assets/*.{png,jpg,jpeg,svg}');
 
-export const heroTextureImports = await importAll(assetContext);
-
-console.log('heroTextureImports::', heroTextureImports);
-
 const MainCarousel = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
+  const [heroTextureImports, setHeroTextureImports] = useState(null)
+
+
+  useEffect(() => {
+    const loadImports = async () => {
+      const imports =  await importAll(assetContext);
+      setHeroTextureImports(imports);
+    }
+    loadImports();
+  }, []);
+
+  console.log(heroTextureImports);
+
+  if (!heroTextureImports) return null;
+
+
   return (
     <Carousel
       infiniteLoop={true}
