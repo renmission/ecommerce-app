@@ -35,8 +35,6 @@ const MainCarousel = () => {
     loadImports();
   }, []);
 
-  console.log(heroTextureImports);
-
   if (!heroTextureImports) return null;
 
 
