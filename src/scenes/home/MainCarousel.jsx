@@ -22,7 +22,9 @@ const importAll = async (context) => {
 
 const assetContext = import.meta.glob('../../assets/*.{png,jpg,jpeg,svg}');
 
-export const heroTextureImports = importAll(assetContext);
+export const heroTextureImports = await importAll(assetContext);
+
+console.log('heroTextureImports::', heroTextureImports);
 
 const MainCarousel = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
