@@ -24,7 +24,7 @@ const assetContext = import.meta.glob('../../assets/*.{png,jpg,jpeg,svg}');
 
 console.log('assetContext::::', assetContext);
 
-export const heroTextureImports = await importAll(assetContext);
+export const heroTextureImports = async () => await importAll(assetContext);
 
 
 const MainCarousel = () => {
